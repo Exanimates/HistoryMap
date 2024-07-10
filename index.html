@@ -61,27 +61,27 @@
     //     }
     // });
 
-    // ymaps.ready(init);
-    // function init() {
-    //     var myMap = new ymaps.Map("map", {
-    //         center: [54.951438, 82.843259],
-    //         zoom: 10
-    //     });
+    ymaps.ready(init);
+    function init() {
+        var myMap = new ymaps.Map("map", {
+            center: [54.951438, 82.843259],
+            zoom: 10
+        });
 
-    //     var data = ymaps.geoXml.load("https://drive.usercontent.google.com/download?id=1QH4v_yWlGwqJ4P7iXhe37PZ1GWmBWqwl&export=download&authuser=0&confirm=t&uuid=a9565f12-129b-493f-817f-96ba3d272568&at=APZUnTV-wj1FYHBj7zxoNY0je43V:1715934035227");
+        var data = ymaps.geoXml.load("https://drive.usercontent.google.com/download?id=1QH4v_yWlGwqJ4P7iXhe37PZ1GWmBWqwl&export=download&authuser=0&confirm=t&uuid=a9565f12-129b-493f-817f-96ba3d272568&at=APZUnTV-wj1FYHBj7zxoNY0je43V:1715934035227");
 
-    //     data.then(onGeoXmlLoad);
+        data.then(onGeoXmlLoad);
 
-    //     function onGeoXmlLoad(res) {
-    //         myMap.geoObjects.add(res.geoObjects);
-    //         if (res.mapState) {
-    //             res.mapState.applyToMap(myMap);
-    //         }
-    //         else {
-    //             myMap.setBounds(res.geoObjects.getBounds());
-    //         }
-    //     }
-    // }
+        function onGeoXmlLoad(res) {
+            myMap.geoObjects.add(res.geoObjects);
+            if (res.mapState) {
+                res.mapState.applyToMap(myMap);
+            }
+            else {
+                myMap.setBounds(res.geoObjects.getBounds());
+            }
+        }
+    }
 
     // function saveMetaInformation() {
     //     // Создаем данные для записи в файл
