@@ -9,36 +9,134 @@
         &lang=ru_RU" type="text/javascript">
         </script>
         <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="index.css"></link>
     </head>
 </head>
 <body>
     <div id="map" style="width: 1920px; height: 1080px"></div>
-    <input type="button" value="Показать пример KML" class="load-kml" />
+    <img class="row" id="row" src="rowingat-rowing.gif"></img>
+    <input onclick="readFile()" type="file">Сохранить в файл</button>
+    <button  onclick="saveMetaInformation()">Сохранить мета информацию</button>
 </body>
 </html>
 <script type="text/javascript">
-    // test
-    ymaps.ready(init);
-    function init() {
-        var myMap = new ymaps.Map("map", {
-            center: [54.951438, 82.843259],
-            zoom: 10
-        });
+    // var row = document.getElementById("row");
 
-        var data = ymaps.geoXml.load("https://drive.usercontent.google.com/download?id=1QH4v_yWlGwqJ4P7iXhe37PZ1GWmBWqwl&export=download&authuser=0&confirm=t&uuid=a9565f12-129b-493f-817f-96ba3d272568&at=APZUnTV-wj1FYHBj7zxoNY0je43V:1715934035227");
+    // document.addEventListener('keydown', function(event) {
+    //     if (event.code == 'ArrowUp') {
+    //         if (row.style.top == "") {
+    //             row.style.top += -10 + "px";
+    //             return;
+    //         }
 
-        data.then(onGeoXmlLoad);
+    //         var spl = row.style.top.split('p');
+    //         row.style.top = (parseInt(spl[0]) - 10)  + "px";
+    //     }
+    //     if (event.code == 'ArrowDown') {
+    //         if (row.style.top == "") {
+    //             row.style.top = 10 + "px";
+    //             return;
+    //         }
 
-        function onGeoXmlLoad(res) {
-            myMap.geoObjects.add(res.geoObjects);
-            if (res.mapState) {
-                res.mapState.applyToMap(myMap);
-            }
-            else {
-                myMap.setBounds(res.geoObjects.getBounds());
-            }
-        }
-    }
+    //         var spl = row.style.top.split('p');
+    //         row.style.top = (parseInt(spl[0]) + 10)  + "px";
+    //     }
+    //     if (event.code == 'ArrowLeft') {
+    //         if (row.style.marginLeft == "") {
+    //             row.style.marginLeft += -10 + "px";
+    //             return;
+    //         }
+
+    //         var spl = row.style.marginLeft.split('p');
+    //         row.style.marginLeft = (parseInt(spl[0]) - 10)  + "px";
+    //     }
+    //     if (event.code == 'ArrowRight') {
+    //         if (row.style.marginLeft == "") {
+    //             row.style.marginLeft = 10 + "px";
+    //             return;
+    //         }
+
+    //         var spl = row.style.marginLeft.split('p');
+    //         row.style.marginLeft = (parseInt(spl[0]) + 10)  + "px";
+    //     }
+    // });
+
+    // ymaps.ready(init);
+    // function init() {
+    //     var myMap = new ymaps.Map("map", {
+    //         center: [54.951438, 82.843259],
+    //         zoom: 10
+    //     });
+
+    //     var data = ymaps.geoXml.load("https://drive.usercontent.google.com/download?id=1QH4v_yWlGwqJ4P7iXhe37PZ1GWmBWqwl&export=download&authuser=0&confirm=t&uuid=a9565f12-129b-493f-817f-96ba3d272568&at=APZUnTV-wj1FYHBj7zxoNY0je43V:1715934035227");
+
+    //     data.then(onGeoXmlLoad);
+
+    //     function onGeoXmlLoad(res) {
+    //         myMap.geoObjects.add(res.geoObjects);
+    //         if (res.mapState) {
+    //             res.mapState.applyToMap(myMap);
+    //         }
+    //         else {
+    //             myMap.setBounds(res.geoObjects.getBounds());
+    //         }
+    //     }
+    // }
+
+    // function saveMetaInformation() {
+    //     // Создаем данные для записи в файл
+    //     var row = document.getElementById("row");
+        
+    //     var data = `{
+    //         imgPosition: {
+    //            margin-left: ${row.style.marginLeft};
+    //            top: ${row.style.top};
+    //         }         
+    //     }`;
+
+    //     // Создаем объект Blob с данными
+    //     var blob = new Blob([data], {type: 'text/plain'});
+
+    //     // Создаем ссылку на объект Blob
+    //     var url = URL.createObjectURL(blob);
+
+    //     // Создаем ссылку на скачивание файла
+    //     var link = document.createElement('a');
+    //     link.href = url;
+    //     link.download = 'test.txt';
+
+    //     // Добавляем ссылку на страницу
+    //     document.body.appendChild(link);
+
+    //     // Нажимаем на ссылку для скачивания файла
+    //     link.click();
+
+    //     // Освобождаем ресурсы
+    //     URL.revokeObjectURL(url);
+    //     var row = document.getElementById('row');
+    // }
+
+    // function readFile() {
+    //     // Получаем элемент input с типом file
+    //     var fileInput = document.getElementById("fileInput");
+
+    //     // Создаем новый объект FileReader
+    //     var reader = new FileReader();
+
+    //     // Устанавливаем функцию обратного вызова для события загрузки файла
+    //     reader.onload = function() {
+    //         // Выводим содержимое файла
+    //         console.log(reader.result);
+
+    //         row.style = JSON.parse(result);
+    //     };
+
+    //     reader.readAsText(fileInput.files[0]);
+    // }
 
     
 </script>
+
+<style>
+
+</style>
